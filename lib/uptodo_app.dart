@@ -26,7 +26,7 @@ class UptodoApp extends StatelessWidget {
           onGenerateRoute: appRouter.generateRoute,
           theme: lightTheme,
           darkTheme: darkTheme,
-          themeMode: ThemeMode.dark,
+          themeMode: ThemeMode.system,
         );
       },
     );
