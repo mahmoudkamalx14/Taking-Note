@@ -24,6 +24,32 @@ ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.w400,
     ),
   ),
+  textButtonTheme: TextButtonThemeData(
+    style: ButtonStyle(
+      padding: WidgetStateProperty.all(
+          EdgeInsets.symmetric(vertical: 12.h, horizontal: 24.w)),
+      fixedSize: WidgetStatePropertyAll(Size(double.infinity, 48.h)),
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      shape: WidgetStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+      ),
+      backgroundColor: WidgetStateProperty.all(
+        const Color(0xFF8874FF),
+      ),
+      foregroundColor: const WidgetStatePropertyAll(Colors.white),
+      textStyle: WidgetStatePropertyAll(
+        TextStyle(
+          color: Colors.white,
+          fontSize: 16.sp,
+          fontFamily: 'Lato',
+          fontWeight: FontWeight.w400,
+        ),
+      ),
+      animationDuration: const Duration(milliseconds: 300),
+    ),
+  ),
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: const AppBarTheme(
     backgroundColor: Colors.white,
