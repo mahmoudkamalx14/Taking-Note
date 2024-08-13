@@ -17,6 +17,13 @@ ThemeData darkTheme = ThemeData(
       fontWeight: FontWeight.w700,
       height: 0,
     ),
+    bodyMedium: TextStyle(
+      color: ColorManager.white,
+      fontSize: 20.sp,
+      fontFamily: 'Lato',
+      fontWeight: FontWeight.w700,
+      height: 0,
+    ),
     bodySmall: TextStyle(
       color: ColorManager.white,
       fontSize: 16.sp,
@@ -50,8 +57,16 @@ ThemeData darkTheme = ThemeData(
       animationDuration: const Duration(milliseconds: 300),
     ),
   ),
+  iconTheme: const IconThemeData(color: Colors.white),
+  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    backgroundColor: Color(0xFFE9E5FB),
+    selectedItemColor: Color(0xFF5F33DF),
+    unselectedItemColor: Color(0xFFB49FF2),
+  ),
   scaffoldBackgroundColor: ColorManager.black,
+  primaryColor: const Color(0xFF8874FF),
   appBarTheme: const AppBarTheme(
     backgroundColor: ColorManager.black,
   ),
+  useMaterial3: true,
 );
