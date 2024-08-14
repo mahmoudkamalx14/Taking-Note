@@ -4,6 +4,12 @@ import 'package:uptodo/core/theme/color_manager.dart';
 
 ThemeData darkTheme = ThemeData(
   textTheme: TextTheme(
+    titleLarge: TextStyle(
+      color: ColorManager.white,
+      fontSize: 20.sp,
+      fontFamily: 'Lato',
+      fontWeight: FontWeight.w600,
+    ),
     titleSmall: TextStyle(
       color: ColorManager.grey,
       fontSize: 16.sp,
@@ -44,15 +50,6 @@ ThemeData darkTheme = ThemeData(
       ),
       backgroundColor: WidgetStateProperty.all(
         const Color(0xFF8874FF),
-      ),
-      foregroundColor: const WidgetStatePropertyAll(Colors.white),
-      textStyle: WidgetStatePropertyAll(
-        TextStyle(
-          color: Colors.white,
-          fontSize: 16.sp,
-          fontFamily: 'Lato',
-          fontWeight: FontWeight.w400,
-        ),
       ),
       animationDuration: const Duration(milliseconds: 300),
     ),

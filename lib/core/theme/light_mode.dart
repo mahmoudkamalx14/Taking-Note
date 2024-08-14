@@ -10,6 +10,12 @@ ThemeData lightTheme = ThemeData(
       fontFamily: 'Lato',
       fontWeight: FontWeight.w400,
     ),
+    titleLarge: TextStyle(
+      color: ColorManager.black,
+      fontSize: 20.sp,
+      fontFamily: 'Lato',
+      fontWeight: FontWeight.w600,
+    ),
     bodyLarge: TextStyle(
       color: ColorManager.black,
       fontSize: 32.sp,
@@ -44,15 +50,6 @@ ThemeData lightTheme = ThemeData(
       ),
       backgroundColor: WidgetStateProperty.all(
         const Color(0xFF8874FF),
-      ),
-      foregroundColor: const WidgetStatePropertyAll(Colors.white),
-      textStyle: WidgetStatePropertyAll(
-        TextStyle(
-          color: Colors.white,
-          fontSize: 16.sp,
-          fontFamily: 'Lato',
-          fontWeight: FontWeight.w400,
-        ),
       ),
       animationDuration: const Duration(milliseconds: 300),
     ),

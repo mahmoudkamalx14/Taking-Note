@@ -86,7 +86,7 @@ class BuildOnboardingItem extends StatelessWidget {
                     textButton: model[index].textButton,
                     onPressed: () {
                       if (index == 2) {
-                        context.navigateTo(Routes.navbarLayout);
+                        context.navigateToReplacement(Routes.navbarLayout);
                       } else {
                         OnboardingCubit.get(context)
                             .emitOnboardingForwordState();

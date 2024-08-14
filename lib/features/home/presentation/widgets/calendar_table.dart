@@ -21,8 +21,8 @@ class _CalendarTableState extends State<CalendarTable> {
       firstDay: DateTime.utc(2024, 6, 10),
       lastDay: DateTime.utc(2030, 3, 14),
       focusedDay: focusedDay,
-      daysOfWeekHeight: 60.h,
-      rowHeight: 70.h,
+      daysOfWeekHeight: 40.h,
+      rowHeight: 60.h,
       calendarFormat: CalendarFormat.week,
       selectedDayPredicate: (day) {
         return isSameDay(selectedDay, day);
@@ -52,14 +52,18 @@ class _CalendarTableState extends State<CalendarTable> {
         weekendStyle: Theme.of(context).textTheme.bodyMedium!,
       ),
       calendarStyle: CalendarStyle(
-        todayTextStyle: Theme.of(context).textTheme.bodyLarge!,
-        selectedTextStyle: Theme.of(context).textTheme.bodyLarge!,
-        weekendTextStyle: Theme.of(context).textTheme.bodyLarge!,
+        todayTextStyle: Theme.of(context).textTheme.bodyMedium!,
+        selectedTextStyle: Theme.of(context).textTheme.bodyMedium!,
+        weekendTextStyle: Theme.of(context).textTheme.bodyMedium!,
+        defaultTextStyle: Theme.of(context).textTheme.bodyMedium!,
         todayDecoration: BoxDecoration(
           color: Theme.of(context).primaryColor,
           shape: BoxShape.circle,
         ),
-        defaultTextStyle: Theme.of(context).textTheme.bodyLarge!,
+        defaultDecoration: const BoxDecoration(
+          color: Colors.transparent,
+          shape: BoxShape.circle,
+        ),
         selectedDecoration: BoxDecoration(
           color: Theme.of(context).primaryColor,
           shape: BoxShape.circle,
