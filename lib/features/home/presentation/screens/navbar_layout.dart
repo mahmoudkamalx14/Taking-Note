@@ -2,6 +2,8 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:uptodo/core/routes/routes.dart';
+import 'package:uptodo/core/utils/extentions.dart';
 import 'package:uptodo/features/home/presentation/screens/notes_screen.dart';
 import 'package:uptodo/features/home/presentation/screens/tasks_screen.dart';
 
@@ -25,8 +27,6 @@ class _NavbarLayoutState extends State<NavbarLayout> {
     const NotesScreen(),
   ];
 
-  final pageTitles = ['Tasks', 'Notes'];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,11 +34,38 @@ class _NavbarLayoutState extends State<NavbarLayout> {
       body: screens[_currentIndex],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      floatingActionButton: const SpeedDial(
+      floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.add_event,
-        animatedIconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: Color(0xFF5F33DF),
+        animatedIconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: const Color(0xFF5F33DF),
         overlayOpacity: 0.5,
+        animationDuration: const Duration(milliseconds: 500),
+        overlayColor: Theme.of(context).scaffoldBackgroundColor,
+        iconTheme: const IconThemeData(color: Colors.white),
+        children: [
+          SpeedDialChild(
+            child: const Icon(Icons.list_alt_sharp, color: Colors.white),
+            backgroundColor: const Color(0xFF5F33DF),
+            labelBackgroundColor: const Color(0xFF5F33DF),
+            labelStyle: const TextStyle(color: Colors.white),
+            label: 'Task',
+            onTap: () {
+              context.pop();
+              context.navigateTo(Routes.addTasksScreen);
+            },
+          ),
+          SpeedDialChild(
+            child: const Icon(Icons.note_alt_outlined, color: Colors.white),
+            backgroundColor: const Color(0xFF5F33DF),
+            labelBackgroundColor: const Color(0xFF5F33DF),
+            label: 'Note',
+            labelStyle: const TextStyle(color: Colors.white),
+            onTap: () {
+              context.pop();
+              context.navigateTo(Routes.addNotesScreen);
+            },
+          ),
+        ],
       ),
       bottomNavigationBar: AnimatedBottomNavigationBar(
         icons: iconList,

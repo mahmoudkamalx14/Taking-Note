@@ -9,12 +9,14 @@ ThemeData lightTheme = ThemeData(
       fontSize: 16.sp,
       fontFamily: 'Lato',
       fontWeight: FontWeight.w400,
+      height: 0,
     ),
     titleLarge: TextStyle(
       color: ColorManager.black,
       fontSize: 20.sp,
       fontFamily: 'Lato',
       fontWeight: FontWeight.w600,
+      height: 0,
     ),
     bodyLarge: TextStyle(
       color: ColorManager.black,
@@ -35,6 +37,14 @@ ThemeData lightTheme = ThemeData(
       fontSize: 16.sp,
       fontFamily: 'Lato',
       fontWeight: FontWeight.w400,
+      height: 0,
+    ),
+    labelMedium: TextStyle(
+      color: ColorManager.black,
+      fontSize: 20.sp,
+      fontFamily: 'Lato',
+      fontWeight: FontWeight.w500,
+      height: 0,
     ),
   ),
   textButtonTheme: TextButtonThemeData(
@@ -54,6 +64,8 @@ ThemeData lightTheme = ThemeData(
       animationDuration: const Duration(milliseconds: 300),
     ),
   ),
+  cardColor: Colors.white,
+  canvasColor: const Color(0xFF8874FF),
   iconTheme: const IconThemeData(color: Colors.black),
   scaffoldBackgroundColor: const Color(0xFFF9F8FD),
   primaryColor: const Color(0xFF8874FF),
@@ -65,5 +77,4 @@ ThemeData lightTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     backgroundColor: Color(0xFFF9F8FD),
   ),
-  useMaterial3: true,
 );

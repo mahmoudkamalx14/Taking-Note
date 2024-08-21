@@ -74,7 +74,8 @@ class BuildOnboardingItem extends StatelessWidget {
                   if (index >= 1)
                     GestureDetector(
                       onTap: () {
-                        OnboardingCubit.get(context).emitOnboardingBackState();
+                        OnboardingCubit.get(context).emitOnboardingBackState(
+                            OnboardingCubit.get(context).pageController);
                       },
                       child: Text(
                         'Back',
@@ -88,8 +89,8 @@ class BuildOnboardingItem extends StatelessWidget {
                       if (index == 2) {
                         context.navigateToReplacement(Routes.navbarLayout);
                       } else {
-                        OnboardingCubit.get(context)
-                            .emitOnboardingForwordState();
+                        OnboardingCubit.get(context).emitOnboardingForwordState(
+                            OnboardingCubit.get(context).pageController);
                       }
                     },
                   ),

@@ -9,7 +9,7 @@ class TasksListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        itemCount: 6,
+        itemCount: 4,
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.only(bottom: 30.h),

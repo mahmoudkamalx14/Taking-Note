@@ -19,7 +19,6 @@ class OnboardingScreen extends StatelessWidget {
               BuildOnboardingItem(index: cubit.index),
           itemCount: onBoardingList.length,
           controller: cubit.pageController,
-          physics: const NeverScrollableScrollPhysics(),
         );
       },
     );

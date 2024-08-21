@@ -11,7 +11,7 @@ ThemeData darkTheme = ThemeData(
       fontWeight: FontWeight.w600,
     ),
     titleSmall: TextStyle(
-      color: ColorManager.grey,
+      color: ColorManager.white,
       fontSize: 16.sp,
       fontFamily: 'Lato',
       fontWeight: FontWeight.w400,
@@ -36,6 +36,13 @@ ThemeData darkTheme = ThemeData(
       fontFamily: 'Lato',
       fontWeight: FontWeight.w400,
     ),
+    labelMedium: TextStyle(
+      color: ColorManager.white,
+      fontSize: 20.sp,
+      fontFamily: 'Lato',
+      fontWeight: FontWeight.w500,
+      height: 0,
+    ),
   ),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
@@ -54,9 +61,11 @@ ThemeData darkTheme = ThemeData(
       animationDuration: const Duration(milliseconds: 300),
     ),
   ),
+  cardColor: const Color(0xFF363636),
+  canvasColor: const Color(0xFF8874FF),
   iconTheme: const IconThemeData(color: Colors.white),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-    backgroundColor: Color(0xFFE9E5FB),
+    backgroundColor: Color(0xFF363636),
     selectedItemColor: Color(0xFF5F33DF),
     unselectedItemColor: Color(0xFFB49FF2),
   ),
@@ -65,5 +74,4 @@ ThemeData darkTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     backgroundColor: ColorManager.black,
   ),
-  useMaterial3: true,
 );
