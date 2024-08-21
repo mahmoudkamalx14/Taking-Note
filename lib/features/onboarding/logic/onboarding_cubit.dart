@@ -11,13 +11,17 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
   int index = 0;
 
-  void emitOnboardingBackState() {
+  void emitOnboardingBackState(pageController) {
     index--;
     emit(OnboardingBackState());
   }
 
-  void emitOnboardingForwordState() {
+  void emitOnboardingForwordState(pageController) {
     index++;
+    print(index);
+    if (index == 3) {
+      index = 0;
+    }
     emit(OnboardingForwordState());
   }
 }

@@ -5,8 +5,8 @@ import 'package:uptodo/core/routes/routes.dart';
 import 'package:uptodo/core/theme/dark_mode.dart';
 import 'package:uptodo/core/theme/light_mode.dart';
 
-class UptodoApp extends StatelessWidget {
-  const UptodoApp({super.key, required this.appRouter});
+class NoteTakingApp extends StatelessWidget {
+  const NoteTakingApp({super.key, required this.appRouter});
 
   final AppRouter appRouter;
 
