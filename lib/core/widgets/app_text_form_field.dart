@@ -5,6 +5,7 @@ class AppTextFormField extends StatelessWidget {
   final String hintText;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
+  final int? maxLines;
   final bool? isObscureText;
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
@@ -31,6 +32,7 @@ class AppTextFormField extends StatelessWidget {
     required this.textInputType,
     this.controller,
     required this.validator,
+    this.maxLines,
   });
 
   @override
@@ -38,38 +40,27 @@ class AppTextFormField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       keyboardType: textInputType,
+      maxLines: maxLines ?? 1,
       style: Theme.of(context).textTheme.labelMedium,
       decoration: InputDecoration(
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
         focusedBorder: focusedBorder ??
             OutlineInputBorder(
-              borderSide: const BorderSide(
-                //   color: ColorsManager.mainBlue,
-                width: 1.3,
-              ),
+              borderSide: const BorderSide(width: 1.3),
               borderRadius: BorderRadius.circular(16),
             ),
         enabledBorder: enabledBorder ??
             OutlineInputBorder(
-              borderSide: const BorderSide(
-                //   color: ColorsManager.lighterGray,
-                width: 1.3,
-              ),
+              borderSide: const BorderSide(width: 1.3),
               borderRadius: BorderRadius.circular(16),
             ),
         errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.red,
-            width: 1.3,
-          ),
+          borderSide: const BorderSide(color: Colors.red, width: 1.3),
           borderRadius: BorderRadius.circular(16),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.red,
-            width: 1.3,
-          ),
+          borderSide: const BorderSide(color: Colors.red, width: 1.3),
           borderRadius: BorderRadius.circular(16),
         ),
         hintText: hintText,

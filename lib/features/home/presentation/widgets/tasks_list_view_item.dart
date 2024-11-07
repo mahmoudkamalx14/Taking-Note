@@ -22,7 +22,7 @@ class _TasksListViewItemState extends State<TasksListViewItem> {
       child: Card(
         color: Theme.of(context).cardColor,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 12.h),
+          padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 12.h),
           child: Row(
             children: [
               GestureDetector(
@@ -33,7 +33,7 @@ class _TasksListViewItemState extends State<TasksListViewItem> {
                   color: Theme.of(context).iconTheme.color,
                 ),
               ),
-              horizontalSpace(12),
+              horizontalSpace(8),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -43,6 +43,7 @@ class _TasksListViewItemState extends State<TasksListViewItem> {
                   ),
                   verticalSpace(6),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
                         'Today At 16:45',
@@ -51,7 +52,9 @@ class _TasksListViewItemState extends State<TasksListViewItem> {
                       horizontalSpace(20),
                       Container(
                         padding: EdgeInsets.symmetric(
-                            horizontal: 8.w, vertical: 8.h),
+                          horizontal: 4.w,
+                          vertical: 8.h,
+                        ),
                         decoration: ShapeDecoration(
                           color: const Color(0xFF7F9BFF),
                           shape: RoundedRectangleBorder(
@@ -77,9 +80,11 @@ class _TasksListViewItemState extends State<TasksListViewItem> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Icon(Icons.flag_outlined),
-                          horizontalSpace(5),
-                          Text('11',
-                              style: Theme.of(context).textTheme.titleSmall),
+                          horizontalSpace(2),
+                          Text(
+                            '1',
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
                         ],
                       ),
                     ],

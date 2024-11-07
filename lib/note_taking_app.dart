@@ -26,7 +26,7 @@ class NoteTakingApp extends StatelessWidget {
           onGenerateRoute: appRouter.generateRoute,
           theme: lightTheme,
           darkTheme: darkTheme,
-          themeMode: ThemeMode.system,
+          themeMode: ThemeMode.light,
         );
       },
     );

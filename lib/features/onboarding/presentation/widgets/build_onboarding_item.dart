@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,15 +7,22 @@ import 'package:uptodo/core/utils/extentions.dart';
 import 'package:uptodo/core/utils/spacer.dart';
 import 'package:uptodo/core/widgets/app_text_button.dart';
 import 'package:uptodo/features/onboarding/data/model/onboarding_model.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:uptodo/features/onboarding/data/onboarding_list.dart';
-import 'package:uptodo/features/onboarding/logic/onboarding_cubit.dart';
 
-class BuildOnboardingItem extends StatelessWidget {
-  const BuildOnboardingItem({super.key, required this.index});
+import 'smooth_page_indicator_widget.dart';
 
-  final int index;
+class BuildOnboardingItem extends StatefulWidget {
+  const BuildOnboardingItem({super.key, required this.currentIndex});
 
+  final int currentIndex;
+
+  @override
+  State<BuildOnboardingItem> createState() => _BuildOnboardingItemState();
+}
+
+PageController pageController = PageController();
+
+class _BuildOnboardingItemState extends State<BuildOnboardingItem> {
   @override
   Widget build(BuildContext context) {
     List<OnBoardingModel> model = onBoardingList;
@@ -30,76 +38,106 @@ class BuildOnboardingItem extends StatelessWidget {
                   GestureDetector(
                     onTap: () =>
                         context.navigateToReplacement(Routes.navbarLayout),
-                    child: Text(
-                      'Skip',
-                      style: Theme.of(context).textTheme.bodySmall,
+                    child: animation(
+                      widget.currentIndex,
+                      500,
+                      Text(
+                        'Skip',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
                     ),
                   ),
                 ],
               ),
               SizedBox(
                 height: 300.h,
-                child: SvgPicture.asset(model[index].image),
+                child: animation(widget.currentIndex, 200,
+                    SvgPicture.asset(model[widget.currentIndex].image)),
               ),
               verticalSpace(50),
-              SmoothPageIndicator(
-                controller: OnboardingCubit.get(context).pageController,
-                count: onBoardingList.length,
-                axisDirection: Axis.horizontal,
-                effect: SlideEffect(
-                  spacing: 8.0,
-                  radius: 8.0,
-                  dotWidth: 26.0.w,
-                  dotHeight: 4.0.h,
-                  paintStyle: PaintingStyle.fill,
-                  strokeWidth: 1.5,
-                  dotColor: const Color(0xFF999999),
-                  activeDotColor: const Color(0xFF8874FF),
+              animation(
+                widget.currentIndex,
+                500,
+                const SmoothPageIndicatorWidget(),
+              ),
+              verticalSpace(50),
+              animation(
+                widget.currentIndex,
+                300,
+                Text(
+                  model[widget.currentIndex].title,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
-              verticalSpace(50),
-              Text(
-                model[index].title,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
               verticalSpace(42),
-              Text(
-                model[index].body,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodySmall,
+              animation(
+                widget.currentIndex,
+                500,
+                Text(
+                  model[widget.currentIndex].body,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
               ),
               const Spacer(),
-              Row(
-                children: [
-                  if (index >= 1)
-                    GestureDetector(
-                      onTap: () {
-                        OnboardingCubit.get(context).emitOnboardingBackState(
-                            OnboardingCubit.get(context).pageController);
-                      },
-                      child: Text(
-                        'Back',
-                        style: Theme.of(context).textTheme.bodySmall,
+              animation(
+                widget.currentIndex,
+                200,
+                Row(
+                  children: [
+                    if (widget.currentIndex >= 1)
+                      GestureDetector(
+                        onTap: () {
+                          pageController.animateToPage(
+                            widget.currentIndex - 1,
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeIn,
+                          );
+                        },
+                        child: Text(
+                          'Back',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
                       ),
+                    const Spacer(),
+                    AppTextButton(
+                      textButton: model[widget.currentIndex].textButton,
+                      onPressed: () {
+                        onDotClicked(context);
+                      },
                     ),
-                  const Spacer(),
-                  AppTextButton(
-                    textButton: model[index].textButton,
-                    onPressed: () {
-                      if (index == 2) {
-                        context.navigateToReplacement(Routes.navbarLayout);
-                      } else {
-                        OnboardingCubit.get(context).emitOnboardingForwordState(
-                            OnboardingCubit.get(context).pageController);
-                      }
-                    },
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  void onDotClicked(BuildContext context) {
+    if (widget.currentIndex == 2) {
+      context.navigateToReplacement(Routes.navbarLayout);
+    } else {
+      pageController.animateToPage(
+        widget.currentIndex + 1,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeIn,
+      );
+    }
+  }
+
+  Widget animation(int index, int delay, Widget child) {
+    if (index == 1) {
+      return FadeInDown(
+        delay: Duration(milliseconds: delay),
+        child: child,
+      );
+    }
+    return FadeInUp(
+      delay: Duration(milliseconds: delay),
+      child: child,
     );
   }
 }

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:uptodo/core/routes/routes.dart';
+import 'package:uptodo/core/utils/extentions.dart';
 import 'package:uptodo/core/utils/spacer.dart';
 import 'package:uptodo/core/widgets/app_text_button.dart';
 import 'package:uptodo/core/widgets/app_text_form_field.dart';
 import 'package:uptodo/core/widgets/custom_appbar.dart';
-import 'package:uptodo/features/home/logic/note_cubit.dart';
-import 'package:uptodo/features/home/logic/note_state.dart';
+import 'package:uptodo/features/home/presentation/logic/note/note_cubit.dart';
+import 'package:uptodo/features/home/presentation/logic/note/note_state.dart';
 
 class AddNoteScreen extends StatelessWidget {
   const AddNoteScreen({super.key});
@@ -30,7 +32,7 @@ class AddNoteScreen extends StatelessWidget {
                     const CustomAppBar(title: 'Add Note'),
                     verticalSpace(50),
                     AppTextFormField(
-                      hintText: 'title',
+                      hintText: 'Title',
                       textInputType: TextInputType.text,
                       controller: cubit.titleController,
                       validator: (val) {
@@ -41,21 +43,23 @@ class AddNoteScreen extends StatelessWidget {
                     ),
                     verticalSpace(20),
                     AppTextFormField(
-                      hintText: 'title',
+                      hintText: 'Content',
                       controller: cubit.contentController,
                       textInputType: TextInputType.text,
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return 'Description must be not empty';
+                          return 'Content must be not empty';
                         }
                       },
                     ),
                     verticalSpace(20),
                     AppTextButton(
                       textButton: 'Add Note',
+                      width: 250.w,
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           cubit.createNote();
+                          context.navigateToReplacement(Routes.navbarLayout);
                         }
                       },
                     ),

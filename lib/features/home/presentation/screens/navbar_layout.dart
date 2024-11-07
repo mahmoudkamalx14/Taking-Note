@@ -71,7 +71,7 @@ class _NavbarLayoutState extends State<NavbarLayout> {
         icons: iconList,
         activeIndex: _currentIndex,
         gapLocation: GapLocation.center,
-        notchSmoothness: NotchSmoothness.verySmoothEdge,
+        notchSmoothness: NotchSmoothness.smoothEdge,
         leftCornerRadius: 32.w,
         rightCornerRadius: 32.w,
         iconSize: 48,

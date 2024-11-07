@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uptodo/features/home/data/models/note_model.dart';
 import 'package:uptodo/features/home/data/repository/note_repository.dart';
-import 'package:uptodo/features/home/logic/note_state.dart';
+import 'package:uptodo/features/home/presentation/logic/note/note_state.dart';
 
 class NoteCubit extends Cubit<NoteState> {
   final NoteRepository _repository;
@@ -27,7 +27,6 @@ class NoteCubit extends Cubit<NoteState> {
 
     response.when(
       success: (data) {
-        print(data.id);
         emit(NoteState.createSuccess(data));
       },
       failure: (message) {
@@ -43,7 +42,7 @@ class NoteCubit extends Cubit<NoteState> {
       success: (data) {
         notes = data;
 
-        emit(NoteState.deleteSuccess(data));
+        emit(NoteState.getAllNotesSuccess(data));
       },
       failure: (message) {
         emit(NoteState.error(message));
@@ -56,7 +55,7 @@ class NoteCubit extends Cubit<NoteState> {
 
     response.when(
       success: (data) {
-        emit(NoteState.deleteSuccess(data));
+        emit(NoteState.searchSuccess(data));
       },
       failure: (message) {
         emit(NoteState.error(message));
@@ -75,7 +74,7 @@ class NoteCubit extends Cubit<NoteState> {
 
     response.when(
       success: (data) {
-        emit(NoteState.deleteSuccess(data));
+        emit(NoteState.updateSuccess(data));
       },
       failure: (message) {
         emit(NoteState.error(message));
@@ -83,14 +82,8 @@ class NoteCubit extends Cubit<NoteState> {
     );
   }
 
-  void deleteNote() async {
-    final response = await _repository.deleteNote(
-      NoteModel(
-        title: titleController.text,
-        content: contentController.text,
-        createdTime: DateTime.now(),
-      ),
-    );
+  void deleteNote(int id) async {
+    final response = await _repository.deleteNote(id);
 
     response.when(
       success: (data) {

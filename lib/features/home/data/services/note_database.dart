@@ -90,7 +90,7 @@ class NoteDatabase {
   }
 
   /// To delete data from the database we create a delete function
-  Future<int> delete(id) async {
+  Future<int> delete(int id) async {
     final db = await instance.database;
 
     return db.delete(

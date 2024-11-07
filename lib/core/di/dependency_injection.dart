@@ -10,6 +10,4 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<NoteDatabase>(() => database);
 
   getIt.registerLazySingleton<NoteRepository>(() => NoteRepository(database));
-
-  // getIt.registerFactory<NoteCubit>(() => NoteCubit(NoteRepository(database)));
 }

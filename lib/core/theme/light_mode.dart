@@ -47,6 +47,16 @@ ThemeData lightTheme = ThemeData(
       height: 0,
     ),
   ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      fixedSize: WidgetStatePropertyAll(Size(double.infinity, 48.h)),
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      backgroundColor: const WidgetStatePropertyAll(Color(0xFF8874FF)),
+      shape: WidgetStateProperty.all(
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      ),
+    ),
+  ),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
       padding: WidgetStateProperty.all(
@@ -65,6 +75,7 @@ ThemeData lightTheme = ThemeData(
     ),
   ),
   cardColor: Colors.white,
+  hoverColor: const Color(0xFFE9E5FB),
   canvasColor: const Color(0xFF8874FF),
   iconTheme: const IconThemeData(color: Colors.black),
   scaffoldBackgroundColor: const Color(0xFFF9F8FD),

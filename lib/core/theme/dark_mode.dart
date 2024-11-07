@@ -44,6 +44,16 @@ ThemeData darkTheme = ThemeData(
       height: 0,
     ),
   ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      fixedSize: WidgetStatePropertyAll(Size(double.infinity, 48.h)),
+      backgroundColor: const WidgetStatePropertyAll(Color(0xFF8874FF)),
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      shape: WidgetStateProperty.all(
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      ),
+    ),
+  ),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
       padding: WidgetStateProperty.all(
@@ -62,6 +72,7 @@ ThemeData darkTheme = ThemeData(
     ),
   ),
   cardColor: const Color(0xFF363636),
+  hoverColor: const Color(0xFFB49FF2),
   canvasColor: const Color(0xFF8874FF),
   iconTheme: const IconThemeData(color: Colors.white),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(

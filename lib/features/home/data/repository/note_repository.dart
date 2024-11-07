@@ -47,8 +47,8 @@ class NoteRepository {
     }
   }
 
-  Future<SqlResult<int>> deleteNote(NoteModel note) async {
-    final response = await _noteDatabase.delete(note);
+  Future<SqlResult<int>> deleteNote(int id) async {
+    final response = await _noteDatabase.delete(id);
 
     try {
       return SqlResult.success(response);
